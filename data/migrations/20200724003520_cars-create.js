@@ -1,5 +1,5 @@
-exports.up = function (knex) {
-  knex.schema.createTable("cars", (tbl) => {
+exports.up = function (knex, Promise) {
+  return knex.schema.createTable("cars", (tbl) => {
     tbl.string("VIN").primary().notNullable().unique();
     tbl.string("make").notNullable();
     tbl.string("model").notNullable();
@@ -9,6 +9,6 @@ exports.up = function (knex) {
   });
 };
 
-exports.down = function (knex) {
-  knex.schema.dropTableIfExists("cars");
+exports.down = function (knex, Promise) {
+  return knex.schema.dropTableIfExists("cars");
 };
